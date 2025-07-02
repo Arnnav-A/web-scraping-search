@@ -10,6 +10,7 @@ This project is a CLI prototype for an intelligent web scraping agent that can u
  - Ask an LLM to summarize and respond to the user's original request.
 
 ## Architectural Decisions
+ - Using groq cloud for free API access to multiple models with generous limits and native integration with LangChain.
  - Using gemma2 as my LLM for quick and inexpensive inference.
  - Creating a local FAISS cache to respond to similar queries through huggingface embeddings.
  - Currently running playwright without headless mode as it is more reliable for catching URLs.
