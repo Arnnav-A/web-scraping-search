@@ -8,7 +8,7 @@ summary_prompt = PromptTemplate(
     input_variables=["content"],
     template=(
         "You are a helpful assistant. A user had a query: {query}\n"
-        "Summarize the following web content in a clear and concise way, suitable for answering the user's query"
+        "Using the following content, respond to the user's query with a concise summary.\n"
         "\n\n{content}\n\nSummary:"
     ),
 )
@@ -24,8 +24,6 @@ def summarize_scraped_texts(texts: list[str], query: str) -> str:
 
     trimmed = [t[:2000] for t in texts if t]
     combined = "\n\n".join(trimmed)
-
-    print(f"Combined text length: {len(combined)} characters.")
 
     if not combined.strip():
         return "No valid text to summarize."

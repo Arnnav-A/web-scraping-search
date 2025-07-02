@@ -63,7 +63,6 @@ async def scrape_top_results(query: str, num_results: int = 5) -> list[str]:
                 # Basic body text extraction
                 body_text = await new_page.locator("body").inner_text()
                 results.append(body_text.strip())
-                print(f"Extracted {len(body_text.strip())} characters.")
                 await new_page.close()
             except Exception as e:
                 print(f"Failed to scrape {url}: {e}")
@@ -73,12 +72,3 @@ async def scrape_top_results(query: str, num_results: int = 5) -> list[str]:
 
     return results
 
-
-# Optional: test run
-if __name__ == "__main__":
-    query = "top 10 delhi tourist places"
-    scraped_texts = asyncio.run(scrape_top_results(query))
-
-    print(f"Extracted content from {len(scraped_texts)} pages.\n")
-    # for i, text in enumerate(scraped_texts):
-        # print(f"\n=== Page {i+1} Preview ===\n{text[:1000]}\n{'='*50}")
