@@ -41,6 +41,9 @@ async def scrape_top_results(query: str, num_results: int = 5) -> list[str]:
             if "duckduckgo" in url:
                 continue
 
+            if "youtube" in url:
+                continue
+
             if parsed.scheme not in ("http", "https"):
                 continue
 
